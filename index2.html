@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Gerador de Senhas</title>
+    <style>
+        /* Estilização básica */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        header {
+            background-color: #4A90E2;
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            max-width: 60px;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Estilo dos paineis */
+        .painel {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            min-width: 250px;
+        }
+
+        .painel h2 {
+            margin-bottom: 20px;
+        }
+
+        .painel-senha {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            font-size: 2rem;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        .noticias-videos {
+            max-width: 560px;
+        }
+
+        .noticias-videos iframe {
+            border-radius: 8px;
+        }
+
+        /* Lista de últimas senhas */
+        .ultimas-senhas ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ultimas-senhas ul li {
+            background-color: #f5f5f5;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .ultimas-senhas ul li:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Logo da Empresa" class="logo">
+        <h1>Painel de Senhas e Informações</h1>
+    </header>
+
+    <main class="container">
+        <!-- Painel de Senhas -->
+        <section class="senha-board painel">
+            <h2>Senha Atual</h2>
+            <div class="painel-senha">
+                <span id="senha-atual">Aguardando...</span>
+            </div>
+            <button id="btn-chamar-senha">Chamar Próxima Senha</button>
+        </section>
+
+        <!-- Exibição de Vídeos/Notícias -->
+        <section class="noticias-videos">
+            <h2>Vídeos ou Notícias</h2>
+            <iframe id="video-frame" width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+            <div id="date-time">
+                <p>Data: <span id="current-date"></span></p>
+                <p>Hora: <span id="current-time"></span></p>
+            </div>
+        </section>
+
+        <!-- Painel de Últimas Senhas -->
+        <section class="ultimas-senhas painel">
+            <h2>Últimas Senhas</h2>
+            <ul id="lista-ultimas-senhas">
+                <!-- Senhas já chamadas -->
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Simulação de fila de senhas
+        let filaSenhas = gerarSenhas(10);
+        let senhaAtual = null;
+        let ultimasSenhas = [];
+
+        // Função para gerar um conjunto de senhas (A001, A002, etc.)
+        function gerarSenhas(qtd) {
+            let senhas = [];
+            for (let i = 1; i <= qtd; i++) {
+                senhas.push(`A${String(i).padStart(3, '0')}`);
+            }
+            return senhas;
+        }
+
+        // Função para chamar a próxima senha
+        document.getElementById('btn-chamar-senha').addEventListener('click', () => {
+            if (filaSenhas.length > 0) {
+                senhaAtual = filaSenhas.shift();
+                document.getElementById('senha-atual').textContent = senhaAtual;
+                ultimasSenhas.unshift(senhaAtual);
+                atualizarUltimasSenhas();
+                
+
+                // Gera mais senhas se a fila estiver vazia
+                if (filaSenhas.length === 0) {
+                    filaSenhas = gerarSenhas(10);
+                }
+            } else {
+                alert('Nenhuma senha disponível no momento!');
+            }
+        });
+
+        // Atualiza a lista de últimas senhas
+        function atualizarUltimasSenhas() {
+            const lista = document.getElementById('lista-ultimas-senhas');
+            lista.innerHTML = '';  // Limpa a lista antes de atualizar
+            ultimasSenhas.slice(0, 5).forEach(senha => {
+                const li = document.createElement('li');
+                li.textContent = `Senha ${senha}`;
+                lista.appendChild(li);
+            });
+        }
+        // Exibe a data e hora em tempo real
+function atualizarHora() {
+    const dataAtual = new Date();
+    document.getElementById('current-date').textContent = dataAtual.toLocaleDateString();
+    document.getElementById('current-time').textContent = dataAtual.toLocaleTimeString();
+}
+
+setInterval(atualizarHora, 1000); // Atualiza a hora a cada segundo
+    </script>
+</body>
+</html>

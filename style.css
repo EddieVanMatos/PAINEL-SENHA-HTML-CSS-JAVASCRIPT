@@ -1,0 +1,65 @@
+/* Estilização básica */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #4A90E2;
+    padding: 20px;
+    color: white;
+}
+
+.logo {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    margin: 20px 0;
+}
+
+.senha-board {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#btn-chamar-senha {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.noticias-videos, .anuncios, .info-empresa, .feedback {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider img {
+    width: 100%;
+    max-width: 400px;
+}
+
+textarea {
+    width: 80%;
+    padding: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

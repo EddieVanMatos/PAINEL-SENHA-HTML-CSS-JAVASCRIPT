@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Gerador de Senhas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Logo da Empresa" class="logo">
+        <h1>Painel de Senhas e Informações</h1>
+    </header>
+
+    <main>
+        <!-- Painel de Senhas -->
+        <section class="senha-board">
+            <h2>Senha Atual: <span id="senha-atual">Aguardando...</span></h2> 
+            <button id="btn-chamar-senha">Chamar Próxima Senha</button>
+            <ul id="fila-senhas">
+                <!-- Lista de senhas -->
+            </ul>
+            <div>
+                <a href="index1.html" class="button-link">Display Senhas</a>
+                <a href="index2.html" class="button-link">Display Senhas opção 2</a>
+            </div>
+        </section>
+
+        <!-- Exibição de Vídeos/Notícias -->
+        <section class="noticias-videos">
+            <h2>Vídeos ou Notícias</h2>
+            <iframe id="video-frame" width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+            <div id="date-time">
+                <p>Data: <span id="current-date"></span></p>
+                <p>Hora: <span id="current-time"></span></p>
+            </div>
+        </section>
+
+        <!-- Anúncios Promocionais -->
+        <section class="anuncios">
+            <h2>Anúncios Promocionais</h2>
+            <div class="slider">
+                <img id="slider-img" src="assets/anuncios/anuncio1.jpg" alt="Anúncio 1">
+            </div>
+        </section>
+
+        <!-- Informações da Empresa -->
+        <section class="info-empresa">
+            <h2>Informações da Empresa</h2>
+            <p>Missão: Fornecer o melhor atendimento...</p>
+            <p>Visão: Ser a empresa mais reconhecida...</p>
+        </section>
+
+        <!-- Feedback -->
+        <section class="feedback">
+            <h2>Deixe seu Feedback</h2>
+            <form id="feedback-form">
+                <textarea id="feedback" rows="4" placeholder="Digite seu feedback"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

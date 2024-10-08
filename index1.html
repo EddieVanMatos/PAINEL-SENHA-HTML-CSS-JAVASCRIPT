@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Atendimento</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#video-news iframe {
+    margin-bottom: 20px;
+}
+
+.ticket-system {
+    margin: 20px 0;
+}
+
+#current-ticket {
+    font-size: 2em;
+    color: #007bff;
+}
+
+#date-time {
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel de Atendimento</h1>
+        <!-- Exibição de Vídeos/Notícias -->
+        <section class="video-news">
+            <h2>Vídeos ou Notícias</h2>
+            <iframe id="video-frame" width="560" height="315" 
+            src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1" 
+            frameborder="0" allowfullscreen></iframe>
+                <div id="date-time">
+                <p>Data: <span id="current-date"></span></p>
+                <p>Hora: <span id="current-time"></span></p>
+            </div>
+        </section>
+        <div class="ticket-system">
+            <h2>Senha Atual: <span id="current-ticket">A001</span></h2>
+            <button id="call-next">Chamar Próxima Senha</button>
+        </div>
+
+    </div>
+    <script>
+        // Exibe a data e hora em tempo real
+function atualizarHora() {
+    const dataAtual = new Date();
+    document.getElementById('current-date').textContent = dataAtual.toLocaleDateString();
+    document.getElementById('current-time').textContent = dataAtual.toLocaleTimeString();
+}
+
+setInterval(atualizarHora, 1000); // Atualiza a hora a cada segundo
+
+// Função para chamar a próxima senha
+let senhaAtual = 1;
+
+document.getElementById('call-next').addEventListener('click', function() {
+    senhaAtual++;
+    document.getElementById('current-ticket').textContent = `A${senhaAtual.toString().padStart(3, '0')}`;
+});
+    </script>
+</body>
+</html>
