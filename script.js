@@ -21,6 +21,9 @@ function atualizarFila() {
         filaUl.appendChild(li);
     });
 }
+
+
+
 // Exibe a data e hora em tempo real
 function atualizarHora() {
     const dataAtual = new Date();
@@ -30,8 +33,9 @@ function atualizarHora() {
 
 setInterval(atualizarHora, 1000); // Atualiza a hora a cada segundo
 
+
 // Carrossel de anúncios
-const anuncios = ['assets/anuncios/anuncio1.jpg', 'assets/anuncios/anuncio2.jpg', 'assets/anuncios/anuncio3.jpg'];
+const anuncios = ['https://www.w3schools.com/w3images/fjords.jpg',  'https://www.w3schools.com/w3images/mountains.jpg'];
 let indiceAtual = 0;
 
 setInterval(() => {

@@ -112,7 +112,6 @@
 </head>
 <body>
     <header>
-        <img src="assets/logo.png" alt="Logo da Empresa" class="logo">
         <h1>Painel de Senhas e Informações</h1>
     </header>
 
@@ -129,7 +128,24 @@
         <!-- Exibição de Vídeos/Notícias -->
         <section class="noticias-videos">
             <h2>Vídeos ou Notícias</h2>
-            <iframe id="video-frame" width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+            <section id="videos">
+                <h2>Vídeos/Notícias</h2>
+                <div class="col-md-4">
+                    <div class="card mt-3">
+                        <div class="card-header bg-secondary text-white">
+                            <h2>Mídia</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="owl-carousel" id="videoCarousel">
+                                <div class="item"><video src="video1.mp4" autoplay loop muted></video></div>
+                                <div class="item"><video src="video2.mp4" autoplay loop muted></video></div>
+                                <div class="item"><video src="video3.mp4" autoplay loop muted></video></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                   </section>
+            <iframe id="video-frame" width="560" height="315" src="video3.mp4" frameborder="0" allowfullscreen></iframe>
             <div id="date-time">
                 <p>Data: <span id="current-date"></span></p>
                 <p>Hora: <span id="current-time"></span></p>
@@ -143,7 +159,16 @@
                 <!-- Senhas já chamadas -->
             </ul>
         </section>
+        
     </main>
+    <hr>
+    <footer>
+        <nav>
+            <a href="index.html" class="button-link">Painel Principal</a>
+            <a href="index1.html" class="button-link">Display Senhas</a>
+            <a href="index2.html" class="button-link">Display Senhas opção 2</a>
+        </nav>
+    </footer>
 
     <script>
         // Simulação de fila de senhas
