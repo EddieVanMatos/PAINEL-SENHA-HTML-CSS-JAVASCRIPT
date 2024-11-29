@@ -14,8 +14,9 @@
     <main>
         <!-- Painel de Senhas -->
         <section class="senha-board">
-            <h2>Senha Atual: <span id="senha-atual">Aguardando...</span></h2> 
-            <button id="btn-chamar-senha">Chamar Próxima Senha</button>
+            <div class="ticket-system">
+                <h2>Senha Atual: <span id="current-ticket">A001</span></h2>
+                <button id="call-next">Chamar Próxima Senha</button>
             <ul id="fila-senhas">
                 <!-- Lista de senhas -->
             </ul>
@@ -25,22 +26,27 @@
             </div>
         </section>
 
-        <!-- Exibição de Vídeos/Notícias -->
-        <section class="noticias-videos">
-            <h2>Vídeos ou Notícias</h2>
-            
-            <iframe id="video-frame" width="560" height="315" src="video1.mp4" frameborder="0" allowfullscreen></iframe>
-            <div id="date-time">
-                <p>Data: <span id="current-date"></span></p>
-                <p>Hora: <span id="current-time"></span></p>
-            </div>
-        </section>
+<!-- Vídeos/Notícias -->
+<section id="videos">
+    <h2>Vídeos/Notícias</h2>
+    <div class="owl-carousel owl-theme" id="videoCarousel">
+
+        <div class="item"><video src="video1.mp4" autoplay loop muted></video></div>
+
+    </div>
+    <div id="date-time">
+        <p>Data: <span id="current-date"></span></p>
+        <p>Hora: <span id="current-time"></span></p>
+    </div>
+</section>
+
+
 
         <!-- Anúncios Promocionais -->
         <section class="anuncios">
             <h2>Anúncios Promocionais</h2>
             <div class="slider">
-                <img id="slider-img" src="assets/anuncios/anuncio1.jpg" alt="Anúncio 1">
+                <img id="slider-img" src="anuncio1.jpg" alt="Anúncio 1">
             </div>
         </section>
         
@@ -69,6 +75,31 @@
         </nav>
     </footer>
     </main>
+    <script>// Exibe a data e hora em tempo real
+        function atualizarHora() {
+            const dataAtual = new Date();
+            document.getElementById('current-date').textContent = dataAtual.toLocaleDateString();
+            document.getElementById('current-time').textContent = dataAtual.toLocaleTimeString();
+        }
+        
+        setInterval(atualizarHora, 1000); // Atualiza a hora a cada segundo
+        // Função para chamar a próxima senha
+let senhaAtual = 1;
+
+document.getElementById('call-next').addEventListener('click', function() {
+    senhaAtual++;
+    document.getElementById('current-ticket').textContent = `A${senhaAtual.toString().padStart(3, '0')}`;
+});
+        // Carrossel de anúncios
+const anuncios = ['https://www.w3schools.com/w3images/fjords.jpg',  'https://www.w3schools.com/w3images/mountains.jpg'];
+let indiceAtual = 0;
+
+setInterval(() => {
+    indiceAtual = (indiceAtual + 1) % anuncios.length;
+    document.getElementById('slider-img').src = anuncios[indiceAtual];
+}, 3000); // Muda o anúncio a cada 3 segundos
+
+        </script>
 
     <script src="script.js"></script>
 </body>

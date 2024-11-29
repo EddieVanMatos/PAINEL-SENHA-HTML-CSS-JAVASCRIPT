@@ -21,17 +21,47 @@ function atualizarFila() {
         filaUl.appendChild(li);
     });
 }
+$(document).ready(function() {
+    // Inicializa o Owl Carousel
+    $('#videoCarousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 5000, // Tempo entre slides em milissegundos
+        autoplayHoverPause: true,
+        items: 1, // Exibe um vídeo por vez
+        responsive: {
+            0: {
+                items: 1 // Em telas pequenas, exibe 1 vídeo
+            },
+            600: {
+                items: 1 // Em telas médias, exibe 1 vídeo
+            },
+            1000: {
+                items: 1 // Em telas grandes, exibe 1 vídeo
+            }
+        }
+    });
+
+    // Função para atualizar a data e hora
+    function updateDateTime() {
+        const currentDate = new Date();
+        const date = currentDate.toLocaleDateString('pt-BR');
+        const time = currentDate.toLocaleTimeString('pt-BR');
+
+        document.getElementById('current-date').textContent = date;
+        document.getElementById('current-time').textContent = time;
+    }
+
+    // Atualiza a data e hora a cada segundo
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); // Chama a função uma vez para inicializar
+});
 
 
 
-// Exibe a data e hora em tempo real
-function atualizarHora() {
-    const dataAtual = new Date();
-    document.getElementById('current-date').textContent = dataAtual.toLocaleDateString();
-    document.getElementById('current-time').textContent = dataAtual.toLocaleTimeString();
-}
 
-setInterval(atualizarHora, 1000); // Atualiza a hora a cada segundo
 
 
 // Carrossel de anúncios
